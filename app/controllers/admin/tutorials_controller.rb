@@ -3,7 +3,18 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.find(params[:id])
   end
 
-  def create; end
+  def create
+    tutorial = Tutorial.create(tutorial_params)
+    if tutorial.save 
+      # link = "<a href=#{tutorial_videos_path(tutorial)}> View it here.</a>"
+      # flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_videos_path(tutorial))}.".html_safe
+      # flash[:success] = %Q[Sucessfully created tutorial. <a href=#{tutorial_videos_path(tutorial)}> View it here.</a>]
+      # flash[:success] = "Successfully created tutorial. #{view_context.link_to 'View it here.', tutorial_videos_path(tutorial)}".html_safe
+      # flash[:success] = "Successfully created tutorial. #{link_to 'View it here', :controller => 'videos', :action => 'index'}"
+      flash[:success] = "Successfully created tutorial. View it here."
+      redirect_to admin_dashboard_path
+    end
+  end
 
   def new
     @tutorial = Tutorial.new
@@ -26,6 +37,7 @@ class Admin::TutorialsController < Admin::BaseController
   private
 
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list)
+    # params.require(:tutorial).permit(:tag_list)
+    params.require(:tutorial).permit(:title, :description, :thumbnail, :playlist_id)
   end
 end
