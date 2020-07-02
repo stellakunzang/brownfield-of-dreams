@@ -4,8 +4,9 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    tutorial = Tutorial.create(tutorial_params)
+    tutorial = Tutorial.create(new_tutorial_params)
     if tutorial.save 
+      create_videos(tutorial)
       # link = "<a href=#{tutorial_videos_path(tutorial)}> View it here.</a>"
       # flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_videos_path(tutorial))}.".html_safe
       # flash[:success] = %Q[Sucessfully created tutorial. <a href=#{tutorial_videos_path(tutorial)}> View it here.</a>]
@@ -37,7 +38,17 @@ class Admin::TutorialsController < Admin::BaseController
   private
 
   def tutorial_params
-    # params.require(:tutorial).permit(:tag_list)
+    params.require(:tutorial).permit(:tag_list)
+  end
+
+  def new_tutorial_params
     params.require(:tutorial).permit(:title, :description, :thumbnail, :playlist_id)
+  end
+
+  def create_videos(tutorial)
+    service = YoutubeService.new.new_playlist_videos_params(tutorial.playlist_id)
+    service.each do |video_data|
+      tutorial.videos.create(video_data)
+    end 
   end
 end

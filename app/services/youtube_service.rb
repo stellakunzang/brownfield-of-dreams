@@ -23,6 +23,19 @@ class YoutubeService
       item[:snippet][:resourceId][:videoId]  
     end
   end
+
+  def new_playlist_videos_params(playlist_id)
+    new_playlist_videos_params = []
+    playlist_items_info(playlist_id)[:items].map do |item|
+      new_playlist_video_params = {}
+      new_playlist_video_params["title"] = item[:snippet][:title]
+      new_playlist_video_params["description"] = item[:snippet][:description]  
+      new_playlist_video_params["video_id"] = item[:snippet][:resourceId][:videoId]  
+      new_playlist_video_params["thumbnail"] = item[:snippet][:thumbnails][:default][:url]
+      new_playlist_videos_params << new_playlist_video_params
+    end
+    new_playlist_videos_params
+  end
   private
 
 

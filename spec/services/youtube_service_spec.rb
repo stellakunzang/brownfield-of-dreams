@@ -9,7 +9,8 @@ describe YoutubeService do
     playlist_info = service.playlist_info(playlist_id)
     playlist_items_info = service.playlist_items_info(playlist_id)
     playlist_video_ids = service.playlist_video_ids(playlist_id)
-    binding.pry
+    new_playlist_videos_params = service.new_playlist_videos_params(playlist_id)
+
 
     expect(playlist_info).to be_a Hash 
     expect(playlist_info[:kind]).to eq("youtube#playlistListResponse")
