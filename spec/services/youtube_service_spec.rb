@@ -5,8 +5,10 @@ describe YoutubeService do
   it "Playlist information is returned" do
     #playlist_url = https://www.youtube.com/playlist?list=PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt
     playlist_id = "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt"
-    playlist_info = YoutubeService.new.playlist_info(playlist_id)
-    playlist_items_info = YoutubeService.new.playlist_items_info(playlist_id)
+    service = YoutubeService.new
+    playlist_info = service.playlist_info(playlist_id)
+    playlist_items_info = service.playlist_items_info(playlist_id)
+    playlist_video_ids = service.playlist_video_ids(playlist_id)
     binding.pry
 
     expect(playlist_info).to be_a Hash 

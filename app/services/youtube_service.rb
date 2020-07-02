@@ -13,12 +13,18 @@ class YoutubeService
     params = { part: 'snippet', playlistId: id, maxResults: playlist_video_count(id) }
     get_json('youtube/v3/playlistItems', params)
   end
-
-  private
-
+  
   def playlist_video_count(id)
     playlist_info(id)[:items][0][:contentDetails][:itemCount]
   end
+
+  def playlist_video_ids(playlist_id)
+    playlist_items_info(playlist_id)[:items].map do |item|
+      item[:snippet][:resourceId][:videoId]  
+    end
+  end
+  private
+
 
   def get_json(url, params)
     response = conn.get(url, params)
