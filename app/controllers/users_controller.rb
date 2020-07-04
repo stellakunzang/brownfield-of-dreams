@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def show
-    if current_user.github_token.nil?
-      @github_user = current_user
-    else
-      @github_user = GithubUsers.new(current_user.github_token)
-    end
+    @github_user = if current_user.github_token.nil?
+                     current_user
+                   else
+                     GithubUsers.new(current_user.github_token)
+                   end
   end
 
   def new
