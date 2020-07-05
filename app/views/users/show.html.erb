@@ -25,12 +25,20 @@
         <h2>Followers</h2>
         <% @github_user.followers.each do |follower| %>
           <%= link_to follower.handle, follower.url %><br>
+          <% if follower.in_system? && !follower.friend? %>
+            <%= link_to "Add as Friend", user_friendships_path %>
+          <% end %>
         <% end %>
       </section>
       <section class="following">
         <h2>Following</h2>
         <% @github_user.followings.each do |following| %>
           <%= link_to following.handle, following.url %><br>
+          <% if following.in_system? && !following.friend? %>
+            <%= link_to "Add as Friend", user_friendships_path %>
+          <% else %>
+            <%= "Already Friends" %>
+          <% end %>
         <% end %>
       </section>
     <%end %>
