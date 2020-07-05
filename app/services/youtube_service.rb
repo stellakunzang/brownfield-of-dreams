@@ -12,7 +12,8 @@ class YoutubeService
   def playlist_items_info(id)
     results_count = playlist_info(id)[:items][0][:contentDetails][:itemCount]
     params = { part: part_details, playlistId: id, maxResults: results_count }
-    get_json('youtube/v3/playlistItems', params)
+    get_json("youtube/v3/playlistItems", params)
+    #if there is a next_page token, iterage through and add it to the array
   end
 
   private
