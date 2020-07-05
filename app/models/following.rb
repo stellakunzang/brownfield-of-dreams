@@ -6,4 +6,10 @@ class Following
     @handle = following_data[:login]
     @url = following_data[:html_url]
   end
+
+  def in_system? 
+  end
+
+  def friend?
+  end
 end

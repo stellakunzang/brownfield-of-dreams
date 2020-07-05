@@ -6,4 +6,12 @@ class Follower
     @handle = follower_data[:login]
     @url = follower_data[:html_url]
   end
+
+  def in_system?
+    binding.pry
+  end
+
+  def friend?
+    binding.pry
+  end
 end
