@@ -6,7 +6,7 @@ class UsersController < ApplicationController
                      GithubUsers.new(current_user.github_token)
                    end
   end
-  #test comment
+
   def new
     @user = User.new
   end
