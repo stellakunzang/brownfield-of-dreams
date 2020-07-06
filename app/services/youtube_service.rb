@@ -13,29 +13,20 @@ class YoutubeService
     results_count = playlist_info(id)[:items][0][:contentDetails][:itemCount]
     results_count = 50 if results_count > 50
     params = { part: part_details, playlistId: id, maxResults: results_count }
-    items = get_json("youtube/v3/playlistItems", params)
-    next_page_playlist_items(items, params, results_count)
+    items = get_json('youtube/v3/playlistItems', params)
+    next_page_playlist_items(items, params)
   end
 
-  def next_page_playlist_items(items, params, results_count)
-    # next_page_token = items[:nextPageToken]
-    # until items[:items].length == results_count
-    #   next_page_items = get_json("youtube/v3/playlistItems?pageToken=#{next_page_token}", params)
-    #   next_page_items[:items].each do |item|
-    #     items[:items] << item
-    #   end
-    # end
-    # items
+  def next_page_playlist_items(items, params)
+    return items unless items[:nextPageToken]
 
-    if items[:nextPageToken]
-      next_page_token = items[:nextPageToken]
-      until !next_page_token
-        next_page_items = get_json("youtube/v3/playlistItems?pageToken=#{next_page_token}", params)
-        next_page_items[:items].each do |item|
-          items[:items] << item
-        end
-        next_page_token = next_page_items[:nextPageToken]
+    next_page_token = items[:nextPageToken]
+    while next_page_token
+      next_page_items = get_json("youtube/v3/playlistItems?pageToken=#{next_page_token}", params)
+      next_page_items[:items].each do |item|
+        items[:items] << item
       end
+      next_page_token = next_page_items[:nextPageToken]
     end
     items
   end

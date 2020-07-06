@@ -34,10 +34,9 @@ class Tutorial < ApplicationRecord
 
   def thumbnail_param(video)
     if video[:snippet][:thumbnails] == {}
-      "" 
-    else 
+      ''
+    else
       video[:snippet][:thumbnails][:default][:url]
-    end 
+    end
   end
-
 end

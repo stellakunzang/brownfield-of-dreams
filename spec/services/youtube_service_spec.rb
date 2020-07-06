@@ -15,7 +15,7 @@ describe YoutubeService do
 
     it "playlist_items_info" do
       playlist_items_info = @service.playlist_items_info(@id)
-      expect(playlist_items_info[:items].length).to eq(13)
+      expect(playlist_items_info[:items].length).to eq(14)
     end
 
     xit "can handle more than 50" do

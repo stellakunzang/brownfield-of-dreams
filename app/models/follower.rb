@@ -16,5 +16,4 @@ class Follower
     friendship = Friendship.find_by(friend_id: @friend.id, user_id: user_id)
     friendship.present?
   end
-
 end
