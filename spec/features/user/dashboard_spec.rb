@@ -74,8 +74,6 @@ describe "Registered User Profile Dashboard" do
     friend.update_attribute(:handle, "stellakunzang")
     visit dashboard_path
     click_on "Connect to Github"
-    @user.update_attribute(:handle, "perryr16")
-    @user.update_attribute(:token, "placeholder")
 
     within(".github")do
       within(".followers")do
@@ -102,8 +100,6 @@ describe "Registered User Profile Dashboard" do
     friend.update_attribute(:handle, "stellakunzang")
     visit dashboard_path
     click_on "Connect to Github"
-    @user.update_attribute(:handle, "perryr16")
-    @user.update_attribute(:token, "placeholder")
 
     within(".github")do
       within(".followers")do
