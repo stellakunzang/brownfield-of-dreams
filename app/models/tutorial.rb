@@ -3,6 +3,35 @@ class Tutorial < ApplicationRecord
   acts_as_taggable_on :tags, :tag_list
   accepts_nested_attributes_for :videos
 
+  def self.filtered_tutorials(params, user)
+    if params[:tag]
+      tagged_tutorials = Tutorial.tagged_with(params[:tag])
+      @tutorials = tagged_tutorials.paginate(page: params[:page], per_page: 5)
+    else
+      @tutorials = Tutorial.all.paginate(page: params[:page], per_page: 5)
+    end
+    
+    return @tutorials.where(classroom: false) if !user
+    @tutorials
+  end
+
+  # def tagged_tutorials(params)
+  #   if params[:tag]
+  #     tagged_tutorials = Tutorial.tagged_with(params[:tag])
+  #     @tutorials = tagged_tutorials.paginate(page: params[:page], per_page: 5)
+  #   else
+  #     @tutorials = Tutorial.all.paginate(page: params[:page], per_page: 5)
+  #   end
+  # end
+
+  def classroom_tutorials(tagged_tutorials, user)
+    if user 
+      tagged_tutorials 
+    else 
+      binding.pry
+    end
+  end
+
   def create_playlist_videos
     playlist_video_params.each do |params|
       videos.create(params)
