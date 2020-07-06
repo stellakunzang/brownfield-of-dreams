@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit] do
     resources :friendships, only: [:create]
-  end 
+  end
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
