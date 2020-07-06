@@ -8,10 +8,13 @@ class Follower
   end
 
   def in_system?
-    binding.pry
+    @friend = User.find_by(handle: @handle)
+    @friend.present?
   end
 
-  def friend?
-    binding.pry
+  def already_friends?(user_id)
+    friendship = Friendship.find_by(friend_id: @friend.id, user_id: user_id)
+    friendship.present?
   end
+
 end
