@@ -4,26 +4,24 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
 
   def self.filtered_tutorials(params, user)
-    if params[:tag]
-      tagged_tutorials = Tutorial.tagged_with(params[:tag])
-      @tutorials = tagged_tutorials.paginate(page: params[:page], per_page: 5)
-    else
-      @tutorials = Tutorial.all.paginate(page: params[:page], per_page: 5)
-    end
-    
-    return @tutorials.where(classroom: false) if !user
-    @tutorials
+    tutorials = tagged_tutorials(params)
+    classroom_tutorials(user, tutorials)
   end
 
-  # def tagged_tutorials(params)
-  #   if params[:tag]
-  #     tagged_tutorials = Tutorial.tagged_with(params[:tag])
-  #     @tutorials = tagged_tutorials.paginate(page: params[:page], per_page: 5)
-  #   else
-  #     @tutorials = Tutorial.all.paginate(page: params[:page], per_page: 5)
-  #   end
-  # end
+  def self.classroom_tutorials(user, tutorials)
+    return tutorials.where(classroom: false) if !user
+    tutorials
+  end
 
+  def self.tagged_tutorials(params)
+    if params[:tag]
+      tagged_tutorials = Tutorial.tagged_with(params[:tag])
+      tagged_tutorials.paginate(page: params[:page], per_page: 5)
+    else
+      Tutorial.all.paginate(page: params[:page], per_page: 5)
+    end
+  end
+  
   def classroom_tutorials(tagged_tutorials, user)
     if user 
       tagged_tutorials 
