@@ -3,9 +3,7 @@ class FriendshipsController < ApplicationController
     @friend = User.find_by(handle: params[:future_friend])
     params[:friend_id] = @friend.id
     friendship = Friendship.create(friendship_params)
-    if friendship.save
-      redirect_to dashboard_path
-    end
+    redirect_to dashboard_path if friendship.save
   end
 
   private
