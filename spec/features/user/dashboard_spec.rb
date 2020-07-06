@@ -71,41 +71,14 @@ describe "Registered User Profile Dashboard" do
   it "user can create friendships if user is connected through github; follower" do
 
     friend = create(:user, role: "default")
-    friend.handle = "stellakunzang"
-    # stub_omniauth_2
+    friend.update_attribute(:handle, "stellakunzang")
     visit dashboard_path
     click_on "Connect to Github"
-
-    within(".github")do
-      within(".following")do
-        click_link "Add as Friend"
-      end
-    end
-
-    expect(current_path).to eq(dashboard_path)
+    @user.update_attribute(:handle, "perryr16")
+    @user.update_attribute(:token, "placeholder")
 
     within(".github")do
       within(".followers")do
-        expect(page).to_not have_content("Add as Friend")
-        expect(page).to have_content("Already Friends")
-      end
-    end
-
-    within(".friendships")do
-      expect(page).to have_content("stellakunzang")
-    end
-  end
-
-  xit "user can create friendships if user is connected through github; following" do
-
-    friend = create(:user, role: "default")
-    friend.handle = "stellakunzang"
-    # stub_omniauth_2
-    visit dashboard_path
-    click_on "Connect to Github"
-
-    within(".github")do
-      within(".follower")do
         click_link "Add as Friend"
       end
     end
@@ -115,7 +88,6 @@ describe "Registered User Profile Dashboard" do
     within(".github")do
       within(".following")do
         expect(page).to_not have_content("Add as Friend")
-        expect(page).to have_content("Already Friends")
       end
     end
 
@@ -124,7 +96,35 @@ describe "Registered User Profile Dashboard" do
     end
   end
 
-  xit "user cannot create fiendships if user is not connected through github" do
+  it "user can create friendships if user is connected through github; following" do
+
+    friend = create(:user, role: "default")
+    friend.update_attribute(:handle, "stellakunzang")
+    visit dashboard_path
+    click_on "Connect to Github"
+    @user.update_attribute(:handle, "perryr16")
+    @user.update_attribute(:token, "placeholder")
+
+    within(".github")do
+      within(".followers")do
+        click_link "Add as Friend"
+      end
+    end
+
+    expect(current_path).to eq(dashboard_path)
+
+    within(".github")do
+      within(".following")do
+        expect(page).to_not have_content("Add as Friend")
+      end
+    end
+
+    within(".friendships")do
+      expect(page).to have_content("stellakunzang")
+    end
+  end
+
+  it "user cannot create fiendships if user is not connected through github" do
     visit dashboard_path
     click_on "Connect to Github"
 
@@ -153,11 +153,3 @@ def stub_omniauth
     credentials: {token: ENV['GITHUB_ROSS_AUTH_TOKEN']}
   })
 end
-
-# def stub_omniauth_2
-#   OmniAuth.config.test_mode = true
-#   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-#     provider: 'github',
-#     credentials: {token: ENV['GITHUB_STELLA_AUTH_TOKEN']}
-#   })
-# end
