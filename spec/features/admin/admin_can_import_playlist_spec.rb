@@ -44,4 +44,19 @@ feature "An admin visiting the admin dashboard" do
     expect(current_path).to eq(new_admin_youtube_playlist_path)
     expect(page).to have_content("Sorry, that ID is not valid. Try again?")
   end
+
+  xscenario "admin can manually add a tutorial with correct info"do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit new_admin_tutorial_path
+
+    fill_in "tutorial[title]", with: "tutorial title"
+    fill_in "tutorial[description]", with: "tutorial description"
+    fill_in "tutorial[thumbnail", with: "http://img.youtube.com/vi/x/1.jpg"
+
+    click_on "Save"
+
+
+  end 
 end
+# http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg
