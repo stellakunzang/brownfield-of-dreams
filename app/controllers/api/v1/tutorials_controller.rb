@@ -1,5 +1,6 @@
 class Api::V1::TutorialsController < ApplicationController
   def index
+    binding.pry
     render json: Tutorial.all
   end
 
