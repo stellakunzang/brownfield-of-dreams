@@ -24,19 +24,20 @@ feature "An admin can delete a tutorial" do
     expect(page).to have_css('.admin-tutorial-card', count: 1)
   end
 
-  # it "deleted tutorial has videos deleted as well" do
-  #   expect(@tutorial1.videos.length).to eq(3)
-  #   expect(Tutorial.all.length).to eq(2)
-  #   expect(Video.all.length).to eq(3)
+  it "deleted tutorial has videos deleted as well" do
+    expect(@tutorial1.videos.length).to eq(3)
+    expect(Tutorial.all.length).to eq(2)
+    expect(Video.all.length).to eq(3)
+    visit admin_dashboard_path
 
-  #   within(first('.admin-tutorial-card')) do
-  #     click_link 'Delete'
-  #   end
+    within(first('.admin-tutorial-card')) do
+      click_link 'Delete'
+    end
 
-  #   expect(Tutorial.all.length).to eq(1)
-  #   expect(Video.all.length).to eq(0)
+    expect(Tutorial.all.length).to eq(1)
+    expect(Video.all.length).to eq(0)
 
-  # end
+  end
   
 
 
