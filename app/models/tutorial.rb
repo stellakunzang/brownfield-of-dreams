@@ -9,7 +9,8 @@ class Tutorial < ApplicationRecord
   end
 
   def self.classroom_tutorials(user, tutorials)
-    return tutorials.where(classroom: false) if !user
+    return tutorials.where(classroom: false) unless user
+
     tutorials
   end
 
@@ -19,14 +20,6 @@ class Tutorial < ApplicationRecord
       tagged_tutorials.paginate(page: params[:page], per_page: 5)
     else
       Tutorial.all.paginate(page: params[:page], per_page: 5)
-    end
-  end
-  
-  def classroom_tutorials(tagged_tutorials, user)
-    if user 
-      tagged_tutorials 
-    else 
-      binding.pry
     end
   end
 
