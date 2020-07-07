@@ -7,7 +7,7 @@ describe "Registered User Profile Dashboard" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 
-  it "sad: users not connected to github do not have github stats"do
+  it "sad: users not connected to github do not have github stats", :vcr do
     visit dashboard_path
 
     expect(page).to have_content("Connect to Github to See Github Details")
@@ -16,7 +16,7 @@ describe "Registered User Profile Dashboard" do
     expect(page).to_not have_content("Following")
   end
 
-  it "5 Github repositories are listed as links" do
+  it "5 Github repositories are listed as links", :vcr do
     visit dashboard_path
     click_on "Connect to Github"
 
@@ -34,7 +34,7 @@ describe "Registered User Profile Dashboard" do
     # expect(current_path).to eq("https://github.com/perryr16/adopt_dont_shop_2003")
   end
 
-  it "Github followers are listed as links to profile" do
+  it "Github followers are listed as links to profile", :vcr do
     visit dashboard_path
     click_on "Connect to Github"
 
@@ -51,7 +51,7 @@ describe "Registered User Profile Dashboard" do
     # expect(current_path).to eq("https://github.com/stellakunzang")
   end
 
-  it "Github followings are listed as links to profile" do
+  it "Github followings are listed as links to profile", :vcr do
     visit dashboard_path
     click_on "Connect to Github"
 
@@ -68,7 +68,7 @@ describe "Registered User Profile Dashboard" do
     # expect(current_path).to eq("https://github.com/stellakunzang")
   end
 
-  it "user can create friendships if user is connected through github; follower" do
+  it "user can create friendships if user is connected through github; follower", :vcr do
 
     friend = create(:user, role: "default")
     friend.update_attribute(:handle, "stellakunzang")
@@ -94,7 +94,7 @@ describe "Registered User Profile Dashboard" do
     end
   end
 
-  it "user can create friendships if user is connected through github; following" do
+  it "user can create friendships if user is connected through github; following", :vcr do
 
     friend = create(:user, role: "default")
     friend.update_attribute(:handle, "stellakunzang")
@@ -120,7 +120,7 @@ describe "Registered User Profile Dashboard" do
     end
   end
 
-  it "user cannot create fiendships if user is not connected through github" do
+  it "user cannot create fiendships if user is not connected through github", :vcr do
     visit dashboard_path
     click_on "Connect to Github"
 

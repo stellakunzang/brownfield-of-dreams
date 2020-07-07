@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-describe 'vistor can create an account', :js do
-  it ' visits the home page' do
+# describe 'vistor can create an account', :js do
+describe 'vistor can create an account' do
+  it ' visits the home page', :vcr do
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'
@@ -33,7 +34,7 @@ describe 'vistor can create an account', :js do
     expect(page).to_not have_content('Sign In')
   end
 
-  it "visitor can register and receive confirmation email" do
+  it "visitor can register and receive confirmation email", :vcr do
     visit '/'
 
     click_on 'Register'

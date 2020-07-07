@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "An admin visiting the admin dashboard" do
   let(:admin)    { create(:admin) }
 
-  scenario "can add a tutorial using youtube playlist id" do
+  scenario "can add a tutorial using youtube playlist id", :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
@@ -30,7 +30,7 @@ feature "An admin visiting the admin dashboard" do
     expect(video_2.title).to appear_before(video_3.title)
   end
 
-  scenario "cannot add a tutorial using bad youtube playlist id" do
+  scenario "cannot add a tutorial using bad youtube playlist id", :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
@@ -46,7 +46,7 @@ feature "An admin visiting the admin dashboard" do
   end
 
 
-  xscenario "admin can manually add a tutorial with correct info"do
+  xscenario "admin can manually add a tutorial with correct info" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
@@ -60,7 +60,7 @@ feature "An admin visiting the admin dashboard" do
 
   end 
 
-  scenario "playlist has more than 50 videos" do
+  scenario "playlist has more than 50 videos", :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
