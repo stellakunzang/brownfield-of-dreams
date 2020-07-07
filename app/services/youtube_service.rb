@@ -13,6 +13,7 @@ class YoutubeService
     results_count = playlist_info(id)[:items][0][:contentDetails][:itemCount]
     results_count = 50 if results_count > 50
     params = { part: part_details, playlistId: id, maxResults: results_count }
+
     playlist_videos = get_json('youtube/v3/playlistItems', params)
     next_page_playlist_items(playlist_videos, params)
   end

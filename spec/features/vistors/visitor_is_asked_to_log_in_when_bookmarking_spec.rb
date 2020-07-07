@@ -7,8 +7,10 @@ describe 'visitor visits video show page' do
 
     visit tutorial_path(tutorial)
 
-    click_on 'Bookmark'
-
-    expect(current_path).to eq(login_path)
+    expect(page).to have_content('User must login to bookmark videos')
+    expect(page).to have_content('Bookmark')
+    expect(page).to_not have_button('Bookmark') 
+    expect(page).to_not have_link('Bookmark') 
+    expect(current_path).to eq(tutorial_path(tutorial))
   end
 end
