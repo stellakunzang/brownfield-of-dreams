@@ -15,4 +15,10 @@ class User < ApplicationRecord
   def bookmarked_videos
     videos.order(:tutorial_id, :position)
   end
+
+  def status
+    return "Status: Active" if active
+    "Confirm email to activate your account"
+  end
+
 end
