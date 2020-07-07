@@ -46,11 +46,9 @@ feature "An admin visiting the admin dashboard" do
   end
 
 
-<<<<<<< HEAD
   scenario "1 of 3admin can manually add a tutorial with correct info"do
-=======
-  xscenario "admin can manually add a tutorial with correct info" do
->>>>>>> master
+
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
@@ -82,7 +80,6 @@ feature "An admin visiting the admin dashboard" do
     expect(page).to have_content("Successfully created tutorial.")
   end 
 
-<<<<<<< HEAD
   scenario "3 of 3 admin can manually add a tutorial with correct info"do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
