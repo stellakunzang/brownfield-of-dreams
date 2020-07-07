@@ -4,15 +4,16 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    # if !empty_params.empty?
-    #   flash[:error] = "Please Enter a valid #{empty_params}."
-    #   redirect_to redirect_to new_admin_tutorials_path
-    if valid_thumbnail?(params[:tutorial][:thumbnail])
+
+    if !missing_params.empty?
+      flash[:error] = "Please enter a #{missing_params}."
+      redirect_to new_admin_tutorial_path
+    elsif valid_thumbnail?(params[:tutorial][:thumbnail])
       tutorial = Tutorial.create(new_tutorial_params)
       flash[:success] = "Successfully created tutorial."
       redirect_to "/tutorials/#{tutorial.id}"
     else 
-      flash[:error] = "Please enter a vaid thumbnail."
+      flash[:error] = "Please enter a valid thumbnail."
       redirect_to new_admin_tutorial_path
     end
   end
@@ -40,10 +41,15 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def valid_thumbnail?(thumbnail)
-    valid_thumbnail_1 = "http://img.youtube.com"
-    valid_thumbnail_2 = "https://img.youtube.com"
-    valid_thumbnail_3 = "img.youtube.com"
-    thumbnail.include?(valid_thumbnail_1) || thumbnail.include?(valid_thumbnail_2) || thumbnail.include?(valid_thumbnail_3)
+    valid_thumbnail1 = "http://img.youtube.com"
+    valid_thumbnail2 = "https://img.youtube.com"
+    valid_thumbnail3 = "img.youtube.com"
+    
+    scenario1 = thumbnail[0..21] == valid_thumbnail1[0..21] 
+    scenario2 = thumbnail[0..22] == valid_thumbnail2[0..22] 
+    scenario3 = thumbnail[0..14] == valid_thumbnail3[0..14] 
+    
+    scenario1 || scenario2 || scenario3
   end
 
   # def results
@@ -56,5 +62,13 @@ class Admin::TutorialsController < Admin::BaseController
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
+  end
+
+  def missing_params
+    missing_params = []
+    params[:tutorial].each do |key, value|
+        missing_params << key if value == ""
+    end
+    missing_params.join(", ")
   end
 end
