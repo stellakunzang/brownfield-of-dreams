@@ -1,0 +1,631 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/playlists?id=PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt&key=<YOUTUBE_API_KEY>&part=snippet,contentDetails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Tue, 07 Jul 2020 13:38:23 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443";
+        ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "youtube#playlistListResponse",
+          "etag": "eplvhRAXHf-jdXJIuFCV23pbIo0",
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 5
+          },
+          "items": [
+            {
+              "kind": "youtube#playlist",
+              "etag": "NSKBDtovmWinJsRi15CdX0tSMHU",
+              "id": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+              "snippet": {
+                "publishedAt": "2020-05-04T17:25:44Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Mod 0 Review",
+                "description": "",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "localized": {
+                  "title": "Mod 0 Review",
+                  "description": ""
+                }
+              },
+              "contentDetails": {
+                "itemCount": 10
+              }
+            }
+          ]
+        }
+  recorded_at: Tue, 07 Jul 2020 13:38:23 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/playlistItems?key=<YOUTUBE_API_KEY>&maxResults=10&part=snippet,contentDetails&playlistId=PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Tue, 07 Jul 2020 13:38:24 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443";
+        ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "youtube#playlistItemListResponse",
+          "etag": "iFzmFMfQXQTKHjGHBk48ynurTos",
+          "items": [
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "L0dE7zowIoCpvfrhCyjGFtD8aPE",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC4yODlGNEE0NkRGMEEzMEQy",
+              "snippet": {
+                "publishedAt": "2020-05-04T17:30:16Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "How to use Slack at Turing",
+                "description": "Back-End instructor Tim Tyrrell shows how to use slack, our primary communication tool at Turing.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/tfq333EpWgM/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/tfq333EpWgM/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/tfq333EpWgM/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/tfq333EpWgM/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 0,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "tfq333EpWgM"
+                }
+              },
+              "contentDetails": {
+                "videoId": "tfq333EpWgM",
+                "videoPublishedAt": "2020-05-04T17:36:50Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "yuPbhySURXKxuCy4vx2UbU3NWA4",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC4wOTA3OTZBNzVEMTUzOTMy",
+              "snippet": {
+                "publishedAt": "2020-05-04T21:08:44Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Screen Management Tips",
+                "description": "Technical Programs Instructor Amy Holt gives some tips on screen management",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/I3PBZBX-Fig/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 1,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "I3PBZBX-Fig"
+                }
+              },
+              "contentDetails": {
+                "videoId": "I3PBZBX-Fig",
+                "videoPublishedAt": "2020-05-04T21:07:24Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "QCSHppfpx6C56lvrsSzywNji5QM",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC41NkI0NEY2RDEwNTU3Q0M2",
+              "snippet": {
+                "publishedAt": "2020-05-04T17:29:41Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Variable Assignment in Ruby (Back-End)",
+                "description": "Back-End Instructor Tim Tyrrell shows how to do variable assignment in ruby",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/S-IeM4xnCog/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/S-IeM4xnCog/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/S-IeM4xnCog/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 2,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "S-IeM4xnCog"
+                }
+              },
+              "contentDetails": {
+                "videoId": "S-IeM4xnCog",
+                "videoPublishedAt": "2020-05-04T17:28:15Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "ttO-h3cZQh70EVw1f0kI7AV0YY8",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC5GNjNDRDREMDQxOThCMDQ2",
+              "snippet": {
+                "publishedAt": "2020-06-30T20:12:20Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "OOP   Bottle Example 720p",
+                "description": "",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/DY5MU9_DPKo/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/DY5MU9_DPKo/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/DY5MU9_DPKo/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/DY5MU9_DPKo/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/DY5MU9_DPKo/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 3,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "DY5MU9_DPKo"
+                }
+              },
+              "contentDetails": {
+                "videoId": "DY5MU9_DPKo",
+                "videoPublishedAt": "2020-06-07T02:22:17Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "z0clGSofSq-1o2hQ22ofHPpMtbo",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC41MjE1MkI0OTQ2QzJGNzNG",
+              "snippet": {
+                "publishedAt": "2020-05-04T21:08:17Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Variable Assignment in JavaScript (Front-End)",
+                "description": "Technical Programs Instructor Amy Holt teaches how to do variable assignment in JavaScript",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 4,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "sIGNox7OGD0"
+                }
+              },
+              "contentDetails": {
+                "videoId": "sIGNox7OGD0",
+                "videoPublishedAt": "2020-05-04T21:08:16Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "vifBTp4sHlpgzZDv0rcBV8I6c3U",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC5DQUNERDQ2NkIzRUQxNTY1",
+              "snippet": {
+                "publishedAt": "2020-05-19T00:46:30Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "What is a shell?",
+                "description": "Back-End Instructor Ian Douglas covers what a shell is and how to work with zsh shell",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/gvAUI_bBttU/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/gvAUI_bBttU/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/gvAUI_bBttU/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/gvAUI_bBttU/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/gvAUI_bBttU/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 5,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "gvAUI_bBttU"
+                }
+              },
+              "contentDetails": {
+                "videoId": "gvAUI_bBttU",
+                "videoPublishedAt": "2020-05-19T00:44:48Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "HQelx_OQOJ9mnEzMIXR5c3JAbjA",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC4wMTcyMDhGQUE4NTIzM0Y5",
+              "snippet": {
+                "publishedAt": "2020-05-04T17:55:54Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Git Workflow Part 1",
+                "description": "Front-End Instructor Khalid Williams goes through a common git/github workflow.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/afTH3h3tbA0/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/afTH3h3tbA0/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/afTH3h3tbA0/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/afTH3h3tbA0/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 6,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "afTH3h3tbA0"
+                }
+              },
+              "contentDetails": {
+                "videoId": "afTH3h3tbA0",
+                "videoPublishedAt": "2020-05-04T17:43:19Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "WhfV4oQcf9TUXKhxsL7accR1r8s",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC45NDk1REZENzhEMzU5MDQz",
+              "snippet": {
+                "publishedAt": "2020-05-19T00:48:10Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Working with Hashes (Back-End)",
+                "description": "Back-End Instructor Ian Douglas goes over the hash data type in Ruby",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/QqNy7aMEmoI/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/QqNy7aMEmoI/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/QqNy7aMEmoI/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/QqNy7aMEmoI/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/QqNy7aMEmoI/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 7,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "QqNy7aMEmoI"
+                }
+              },
+              "contentDetails": {
+                "videoId": "QqNy7aMEmoI",
+                "videoPublishedAt": "2020-05-19T00:45:21Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "TQE6tV89BDWczVhS3otBOYgyPAA",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC41MzJCQjBCNDIyRkJDN0VD",
+              "snippet": {
+                "publishedAt": "2020-05-19T00:10:15Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Working with Objects (Front-End)",
+                "description": "Front-end instructor Hannah Hudson goes over the basics of the object data structure in JavaScript.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/bMbqycD6CSE/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/bMbqycD6CSE/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/bMbqycD6CSE/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/bMbqycD6CSE/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/bMbqycD6CSE/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 8,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "bMbqycD6CSE"
+                }
+              },
+              "contentDetails": {
+                "videoId": "bMbqycD6CSE",
+                "videoPublishedAt": "2020-05-19T00:23:25Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "PeWSIFwNA1oPADr2Oz78LVMoCf8",
+              "id": "UEwxWTY3ZjB4UHpkTUZxMlMxYks3RTd2ZVRfQmJLLXpqdC4xMkVGQjNCMUM1N0RFNEUx",
+              "snippet": {
+                "publishedAt": "2020-05-11T15:15:02Z",
+                "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+                "title": "Object Oriented Programming in Ruby",
+                "description": "Back-End Instructor Brian Zanti goes over the basics of OOP in Ruby.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/qkg69bBI42Q/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/qkg69bBI42Q/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/qkg69bBI42Q/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/qkg69bBI42Q/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/qkg69bBI42Q/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Turing School of Software and Design",
+                "playlistId": "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt",
+                "position": 9,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "qkg69bBI42Q"
+                }
+              },
+              "contentDetails": {
+                "videoId": "qkg69bBI42Q",
+                "videoPublishedAt": "2020-05-11T15:09:29Z"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 10,
+            "resultsPerPage": 10
+          }
+        }
+  recorded_at: Tue, 07 Jul 2020 13:38:24 GMT
+recorded_with: VCR 6.0.0

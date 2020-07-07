@@ -8,7 +8,7 @@ describe 'visitor sees a video show' do
     @tutorial_private = create(:tutorial, classroom: true)
     @video2 = create(:video, tutorial_id: @tutorial_private.id)
   end
-  it 'vistor clicks on a tutorial title from the home page' do
+  it 'vistor clicks on a tutorial title from the home page', :vcr do
 
     visit '/'
 
@@ -19,7 +19,7 @@ describe 'visitor sees a video show' do
     expect(page).to have_content(@tutorial_open.title)
   end
 
-  it "visitors cannot see videos marked as classroom content" do
+  it "visitors cannot see videos marked as classroom content", :vcr do
     user = User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :default)
     visit '/login'
 
