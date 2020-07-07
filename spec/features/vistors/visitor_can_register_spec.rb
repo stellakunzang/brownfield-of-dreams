@@ -40,7 +40,7 @@ describe 'vistor can create an account', :js do
 
     expect(current_path).to eq(register_path)
 
-    email = 'stella.k.bonnie@gmail.com'
+    email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'
     password = 'password'
@@ -56,6 +56,13 @@ describe 'vistor can create an account', :js do
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content("Logged in as #{first_name + " " + last_name}")
-    expect(current_path).to have_content("This account has not yet been activated. Please check your email.")
+    expect(page).to have_content("This account has not yet been activated. Please check your email.")
+
+    user = User.last
+    activation_email = ActionMailer::Base.deliveries.last
+
+    expect(activation_email.body).to have_content("Hello #{user.first_name}!")
+    expect(activation_email.body).to have_content("You are almost finished setting up your new account!")
   end
+
 end
