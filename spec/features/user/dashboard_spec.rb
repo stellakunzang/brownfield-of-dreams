@@ -140,6 +140,15 @@ describe "Registered User Profile Dashboard" do
       expect(page).to_not have_content("stellakunzang")
     end
   end
+
+  it "user can activate account" do
+
+    visit "/users/#{@user.id}/activate"
+
+    expect(page).to have_content('Thank you! Your account is now activated.')
+
+    expect(page).to have_content("Status: Active")
+  end
 end
 
 def stub_omniauth
