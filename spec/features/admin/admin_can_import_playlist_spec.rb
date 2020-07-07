@@ -69,7 +69,7 @@ feature "An admin visiting the admin dashboard" do
 
     fill_in "tutorial[title]", with: "tutorial title"
     fill_in "tutorial[description]", with: "tutorial description"
-    fill_in "tutorial[thumbnail]", with: "https://img.youtube.com/vi/x/1.jpg"
+    fill_in "tutorial[thumbnail]", with: "https://img.YOUTUBE.com/vi/x/1.jpg"
 
     click_on "Save"
 

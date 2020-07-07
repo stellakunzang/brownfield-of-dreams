@@ -41,10 +41,10 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def valid_thumbnail?(thumbnail)
+    thumbnail = thumbnail.downcase
     valid_thumbnail1 = "http://img.youtube.com"
     valid_thumbnail2 = "https://img.youtube.com"
     valid_thumbnail3 = "img.youtube.com"
-    
     scenario1 = thumbnail[0..21] == valid_thumbnail1[0..21] 
     scenario2 = thumbnail[0..22] == valid_thumbnail2[0..22] 
     scenario3 = thumbnail[0..14] == valid_thumbnail3[0..14] 
