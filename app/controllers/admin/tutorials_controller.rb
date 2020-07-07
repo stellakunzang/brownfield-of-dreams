@@ -9,11 +9,11 @@ class Admin::TutorialsController < Admin::BaseController
     #   redirect_to redirect_to new_admin_tutorials_path
     if valid_thumbnail?(params[:tutorial][:thumbnail])
       tutorial = Tutorial.create(new_tutorial_params)
-      flash[:error] = "Successfully created tutorial."
-      redirect_to tutorials_path(tutorial)
+      flash[:success] = "Successfully created tutorial."
+      redirect_to "/tutorials/#{tutorial.id}"
     else 
       flash[:error] = "Please enter a vaid thumbnail."
-      redirect_to new_admin_tutorials_path
+      redirect_to new_admin_tutorial_path
     end
   end
 
@@ -40,11 +40,10 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def valid_thumbnail?(thumbnail)
-    valid_thumb_1 = "http://img.youtube.com"
-    valid_thumb_2 = "https://img.youtube.com"
-    valid_thumb_3 = "img.youtube.com"
-    binding.pry
-   # thumbnail.include?(valid_thumbnail_1) || thumbnail.include?(valid_thumbnail_2 || thumbnail.include?(valid_thumbnail_3)
+    valid_thumbnail_1 = "http://img.youtube.com"
+    valid_thumbnail_2 = "https://img.youtube.com"
+    valid_thumbnail_3 = "img.youtube.com"
+    thumbnail.include?(valid_thumbnail_1) || thumbnail.include?(valid_thumbnail_2) || thumbnail.include?(valid_thumbnail_3)
   end
 
   # def results

@@ -8,16 +8,20 @@
 <table class="col col-5">
   <tr>
     <th>Title</th>
-    <th>Actions</th>
+    <th>Edit</th>
+    <th>Delete</th>
+
   </tr>
   <% @facade.tutorials.each do |tutorial| %>
     <tr class="admin-tutorial-card">
       <td><%= link_to tutorial.title, tutorial_path(tutorial) %></td>
       <td>
-        <%= link_to "Edit", edit_admin_tutorial_path(tutorial) %> |
-        <%= link_to "Delete", admin_tutorial_path(tutorial),
+        <%= link_to "Edit", edit_admin_tutorial_path(tutorial), method: :get, class: "video-position-submit btn btn-outline"%>
+      </td>
+      <td>
+      <%= button_to "Delete", admin_tutorial_path(tutorial),
                                method: :delete,
-                               data: { confirm: 'Are you sure?' } %>
+                               data: { confirm: 'Are you sure?' } , class: "video-position-submit btn btn-outline"%>
       </td>
     </tr>
   <% end %>
