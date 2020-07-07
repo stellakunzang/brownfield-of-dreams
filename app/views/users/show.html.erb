@@ -10,8 +10,18 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+    <% if current_user.videos %>
+    <ul>
+     <%current_user.bookmarked_videos.each do |video| %>
+      <li><%= link_to video.title, "/tutorials/#{video.tutorial_id}/?video_id=#{video.id}" %></li>
+     <% end %>
+    </ul>
+    <%else %>
+      <p>Bookmarked videos show up here</p>
+    <%end %>
   </section>
 
+  </section>
   <section class="github">
     <% if current_user.github_token.nil? %>
     <p>Connect to Github to See Github Details</p>
