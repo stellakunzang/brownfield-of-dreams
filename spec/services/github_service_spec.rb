@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe GithubService do
   context "instance methods" do
-    it "returns all repos" do
+    it "returns all repos", :vcr do
       service = GithubService.new(ENV['GITHUB_ROSS_AUTH_TOKEN'])
       repos = service.repos
       expect(repos).to be_an Array
@@ -13,7 +13,7 @@ describe GithubService do
       expect(repo_1).to have_key :html_url
     end
 
-    it "returns all followers" do
+    it "returns all followers", :vcr do
       service = GithubService.new(ENV['GITHUB_ROSS_AUTH_TOKEN'])
       followers = service.followers
       expect(followers).to be_an Array
@@ -24,7 +24,7 @@ describe GithubService do
       expect(follower_1).to have_key :html_url
     end
 
-    it "returns all following" do
+    it "returns all following", :vcr do
       service = GithubService.new(ENV['GITHUB_ROSS_AUTH_TOKEN'])
       followings = service.followings
       expect(followings).to be_an Array

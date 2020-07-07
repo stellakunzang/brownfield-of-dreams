@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Omniauth login process"do
 let(:user)  {create(:user)}
 
-  it "omniauth asssigns github token to user" do
+  it "omniauth asssigns github token to user", :vcr do
     
     stub_omniauth
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
