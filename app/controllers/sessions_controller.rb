@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    flash[:error] = "that didnt work"
+    flash[:error] = "that didnt work, #{params}"
     redirect_to dashboard_path
   end
 end
