@@ -3,7 +3,7 @@ require 'rails_helper'
 describe YoutubeService do
   context "instance methods" do
     before(:each) do
-      @id = "PL1Y67f0xPzdNsXqiJs1s4NlpI6ZMNdMsb"
+      @id = "PL1Y67f0xPzdMFq2S1bK7E7veT_BbK-zjt"
       @service = YoutubeService.new
     end
 
@@ -13,13 +13,16 @@ describe YoutubeService do
       expect(playlist_info).to have_key :items
     end
 
-    it "playlist_items_info" do
+    it "#playlist_items_info" do
       playlist_items_info = @service.playlist_items_info(@id)
       expect(playlist_items_info[:items].length).to eq(14)
+
     end
 
-    xit "can handle more than 50" do
-
+    it "can handle more than 50" do
+      id_50_plus = "PLw3DVCAvDGUtrWrm0s2zxnbrgzkG5YAfF"
+      playlist_items_info = @service.playlist_items_info(id_50_plus)
+      expect(playlist_items_info[:items].length).to eq(127)
     end
   end
 end
