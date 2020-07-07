@@ -26,4 +26,8 @@ class SessionsController < ApplicationController
     session[:github_token] = github_token if current_user.save
     redirect_to dashboard_path
   end
+
+  def failure 
+    binding.pry
+  end
 end
