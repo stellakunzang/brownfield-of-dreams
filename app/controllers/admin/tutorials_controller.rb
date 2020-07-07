@@ -4,15 +4,16 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    if results.snippet.nil?
-      flash[:error] = 'Sorry, that ID is not valid. Try again?'
-      redirect_to new_admin_youtube_playlist_path
-    else
-      tutorial_from_playlist = Tutorial.create(new_tutorial_params)
-      tutorial_from_playlist.create_playlist_videos
-      context = view_context.link_to('View it here', tutorial_path(tutorial_from_playlist.id))
-      flash[:success] = "Successfully created tutorial. #{context}."
-      redirect_to admin_dashboard_path
+    # if !empty_params.empty?
+    #   flash[:error] = "Please Enter a valid #{empty_params}."
+    #   redirect_to redirect_to new_admin_tutorials_path
+    if valid_thumbnail?(params[:tutorial][:thumbnail])
+      tutorial = Tutorial.create(new_tutorial_params)
+      flash[:error] = "Successfully created tutorial."
+      redirect_to tutorials_path(tutorial)
+    else 
+      flash[:error] = "Please enter a vaid thumbnail."
+      redirect_to new_admin_tutorials_path
     end
   end
 
@@ -38,11 +39,23 @@ class Admin::TutorialsController < Admin::BaseController
     params.require(:tutorial).permit(:tag_list)
   end
 
-  def results
-    YoutubePlaylistResults.new(params[:playlist_id])
+  def valid_thumbnail?(thumbnail)
+    valid_thumb_1 = "http://img.youtube.com"
+    valid_thumb_2 = "https://img.youtube.com"
+    valid_thumb_3 = "img.youtube.com"
+    binding.pry
+   # thumbnail.include?(valid_thumbnail_1) || thumbnail.include?(valid_thumbnail_2 || thumbnail.include?(valid_thumbnail_3)
   end
 
+  # def results
+  #   YoutubePlaylistResults.new(params[:playlist_id])
+  # end
+
   def new_tutorial_params
-    results.parameters
+    params.require(:tutorial).permit(:title, :description, :thumbnail)
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 end

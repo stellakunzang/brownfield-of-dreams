@@ -46,18 +46,68 @@ feature "An admin visiting the admin dashboard" do
   end
 
 
-  xscenario "admin can manually add a tutorial with correct info"do
+  scenario "1 of 3admin can manually add a tutorial with correct info"do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
 
     fill_in "tutorial[title]", with: "tutorial title"
     fill_in "tutorial[description]", with: "tutorial description"
-    fill_in "tutorial[thumbnail", with: "http://img.youtube.com/vi/x/1.jpg"
+    fill_in "tutorial[thumbnail]", with: "http://img.youtube.com/vi/x/1.jpg"
 
     click_on "Save"
 
+    tutorial = Tutorial.last
+    expect(current_path).to eq(tutorials_path(tutorial))
+    expect(page).to have_content("Successfully created tutorial.")
+  end 
+  
+  scenario "2 of 3 admin can manually add a tutorial with correct info"do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
+    visit new_admin_tutorial_path
+
+    fill_in "tutorial[title]", with: "tutorial title"
+    fill_in "tutorial[description]", with: "tutorial description"
+    fill_in "tutorial[thumbnail]", with: "https://img.youtube.com/vi/x/1.jpg"
+
+    click_on "Save"
+
+    tutorial = Tutorial.last
+    expect(current_path).to eq(tutorials_path(tutorial))
+    expect(page).to have_content("Successfully created tutorial.")
+  end 
+
+  scenario "3 of 3 admin can manually add a tutorial with correct info"do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit new_admin_tutorial_path
+
+    fill_in "tutorial[title]", with: "tutorial title"
+    fill_in "tutorial[description]", with: "tutorial description"
+    fill_in "tutorial[thumbnail]", with: "img.youtube.com/vi/x/1.jpg"
+
+    click_on "Save"
+
+    tutorial = Tutorial.last
+    expect(current_path).to eq(tutorials_path(tutorial))
+    expect(page).to have_content("Successfully created tutorial.")
+  end
+  
+  xscenario "4 of 4 admin cant manually add a tutorial without correct info"do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit new_admin_tutorial_path
+
+    fill_in "tutorial[title]", with: "tutorial title"
+    fill_in "tutorial[description]", with: "tutorial description"
+    fill_in "tutorial[thumbnail]", with: "img.youtube.com/vi/x/1.jpg"
+
+    click_on "Save"
+
+    tutorial = Tutorial.last
+    expect(current_path).to eq(tutorials_path(tutorial))
+    expect(page).to have_content("Successfully created tutorial.")
   end 
 
   scenario "playlist has more than 50 videos" do
