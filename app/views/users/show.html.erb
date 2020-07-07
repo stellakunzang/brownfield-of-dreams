@@ -22,7 +22,6 @@
     <%end %>
   </section>
 
-  </section>
   <section class="github">
     <% if current_user.github_token.nil? %>
     <p>Connect to Github to See Github Details</p>
@@ -48,7 +47,7 @@
           <%= link_to following.handle, following.url %><br>
           <% if following.in_system? && !following.already_friends?(current_user.id) %>
             <%= link_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{following.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
-          <% else %><br>
+          <% else %>
           <% end %>
         <% end %>
       </section>

@@ -16,12 +16,12 @@ class Admin::YoutubePlaylistsController < Admin::BaseController
     end
   end
 
-  private 
+  private
 
   def results
     YoutubePlaylistResults.new(params[:playlist_id])
   end
-  
+
   def new_tutorial_params
     results.parameters
   end
