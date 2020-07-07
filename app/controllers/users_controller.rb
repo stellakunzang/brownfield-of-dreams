@@ -28,8 +28,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     session[:user_id] = @user.id
     @user.update(active: true)
-    flash[:notice] = "Thank you! Your account is now activated. Status: Active"
-    redirect_to dashboard_path
+    if @user.save
+      flash[:notice] = "Thank you! Your account is now activated."
+      redirect_to dashboard_path
+    end
   end
 
   def activate

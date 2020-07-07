@@ -15,4 +15,5 @@ class User < ApplicationRecord
   def bookmarked_videos
     videos.order(:tutorial_id, :position)
   end
+
 end
