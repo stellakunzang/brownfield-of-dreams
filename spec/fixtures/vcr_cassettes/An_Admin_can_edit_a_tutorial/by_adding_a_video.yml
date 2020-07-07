@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 07 Jul 2020 21:57:41 GMT
+      - Tue, 07 Jul 2020 21:58:58 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -116,5 +116,5 @@ http_interactions:
             "resultsPerPage": 1
           }
         }
-  recorded_at: Tue, 07 Jul 2020 21:57:41 GMT
+  recorded_at: Tue, 07 Jul 2020 21:58:58 GMT
 recorded_with: VCR 6.0.0
