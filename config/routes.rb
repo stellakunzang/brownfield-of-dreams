@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/auth/github/callback', to: 'sessions#update'
+  get '/logout', to: 'sessions#destroy'
 
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
@@ -37,7 +38,9 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: [:new, :create, :update, :edit]
+  resources :users, only: [:new, :create, :update, :edit] do
+    resources :friendships, only: [:create]
+  end
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]

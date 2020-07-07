@@ -40,14 +40,23 @@ class Tutorial < ApplicationRecord
   end
 
   def video_params_values(video)
+    thumbnail = thumbnail_param(video)
     [video[:snippet][:title],
      video[:snippet][:description],
      video[:contentDetails][:videoId],
-     video[:snippet][:thumbnails][:default][:url],
+     thumbnail,
      video[:snippet][:position]]
   end
 
   def video_params_keys
     %i[title description video_id thumbnail position]
+  end
+
+  def thumbnail_param(video)
+    if video[:snippet][:thumbnails] == {}
+      ''
+    else
+      video[:snippet][:thumbnails][:default][:url]
+    end
   end
 end

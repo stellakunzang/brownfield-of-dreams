@@ -5,7 +5,7 @@
   <%= link_to 'Connect to Github', '/auth/github', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
+    <li> <%= current_user.first_name %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
@@ -21,6 +21,7 @@
     <%end %>
   </section>
 
+  </section>
   <section class="github">
     <% if current_user.github_token.nil? %>
     <p>Connect to Github to See Github Details</p>
@@ -33,15 +34,35 @@
       <section class="followers">
         <h2>Followers</h2>
         <% @github_user.followers.each do |follower| %>
-          <%= link_to follower.handle, follower.url %><br>
+          <%= link_to follower.handle, follower.url %>
+          <% if follower.in_system? && !follower.already_friends?(current_user.id) %>
+            <%= link_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{follower.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
+          <% else %><br>
+          <% end %>
         <% end %>
       </section>
       <section class="following">
         <h2>Following</h2>
         <% @github_user.followings.each do |following| %>
           <%= link_to following.handle, following.url %><br>
+          <% if following.in_system? && !following.already_friends?(current_user.id) %>
+            <%= link_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{following.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
+          <% else %><br>
+          <% end %>
         <% end %>
       </section>
-    <%end %>
+    <% end %>
+  </section>
+
+  <section class="friendships">
+    <h1>Friends</h1>
+    <% if current_user.friends.empty? %>
+      <%= "Bummer.You have no friends." %>
+    <% else %>
+      <% current_user.friends.each do |friend| %>
+        <%= friend.first_name %> <%= friend.last_name %> <br>
+        <%= friend.handle %>
+      <% end %>
+    <% end %>
   </section>
 </section>
