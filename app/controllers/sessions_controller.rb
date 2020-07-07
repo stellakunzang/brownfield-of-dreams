@@ -27,7 +27,8 @@ class SessionsController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def failure 
-    binding.pry
+  def failure
+    flash[:error] = "that didnt work"
+    redirect_to dashboard_path
   end
 end
