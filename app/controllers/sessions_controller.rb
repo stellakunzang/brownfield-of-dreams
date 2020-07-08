@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def update
     github_token = request.env['omniauth.auth'][:credentials][:token]
-    handle = request.env['omniauth.auth'][:extra][:raw_info][:login]
+    user_handle(github_token)
     current_user.update(github_token: github_token, handle: handle)
     session[:github_token] = github_token if current_user.save
     redirect_to dashboard_path
@@ -31,5 +31,10 @@ class SessionsController < ApplicationController
   def failure
     flash[:error] = 'Connecting to Github was Unsuccessful'
     redirect_to dashboard_path
+  end
+
+  def user_handle(token)
+    binding.pry
+    GithubService.new(token).get_url[:login]
   end
 end
