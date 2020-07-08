@@ -10,9 +10,14 @@
     <li> <%= current_user.email %> </li>
     <li> <%= current_user.status %> </li>
   </ul>
-  <section id="invite">
-    <%= link_to 'Send an Invite', invite_path %>
-  </section>
+  <%if current_user.github_token%>
+    <section id="invite">
+      <%= link_to 'Send an Invite', invite_path, class: "btn btn-outline mb1 teal" %>
+    </section>
+  <%else %>
+    <p>Connect to Github to send invites</p>
+    <p class="btn btn-outline mb1 teal" %> Send an Invite </p>
+  <%end %>
   <section>
     <h1>Bookmarked Segments</h1>
     <% if current_user.videos %>

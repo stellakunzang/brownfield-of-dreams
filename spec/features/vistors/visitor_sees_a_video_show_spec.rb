@@ -38,5 +38,4 @@ describe 'visitor sees a video show' do
     expect(page).to_not have_content(@tutorial_private.title)
 
   end
-  
 end

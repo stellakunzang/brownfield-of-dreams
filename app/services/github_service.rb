@@ -4,10 +4,8 @@ class GithubService
   end
 
   def conn
-    Faraday.new("https://api.github.com")
+    Faraday.new('https://api.github.com')
   end
-
-
 
   def get_url(url)
     response = conn.get("/user/#{url}") do |res|
@@ -34,5 +32,4 @@ class GithubService
     end
     JSON.parse(response.body, symbolize_names: true)
   end
-
 end
