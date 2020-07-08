@@ -5,15 +5,11 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
     if missing_params.present?
-      flash[:error] = "Please enter a #{missing_params}."
-      redirect_to new_admin_tutorial_path
+      missing_params_error
     elsif valid_thumbnail?(params[:tutorial][:thumbnail])
-      tutorial = Tutorial.create(new_tutorial_params)
-      flash[:success] = 'Successfully created tutorial.'
-      redirect_to "/tutorials/#{tutorial.id}"
+      new_tutorial_success
     else
-      flash[:error] = 'Please enter a valid thumbnail.'
-      redirect_to new_admin_tutorial_path
+      invalid_thumbnail_error
     end
   end
 
@@ -23,9 +19,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   def update
     tutorial = Tutorial.find(params[:id])
-    if tutorial.update(tutorial_params)
-      flash[:success] = "#{tutorial.title} tagged!"
-    end
+    flash[:success] = "#{tutorial.title} tagged!" if tutorial.update(tutorial_params)
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 
@@ -53,16 +47,8 @@ class Admin::TutorialsController < Admin::BaseController
     scenario1 || scenario2 || scenario3
   end
 
-  # def results
-  #   YoutubePlaylistResults.new(params[:playlist_id])
-  # end
-
   def new_tutorial_params
     params.require(:tutorial).permit(:title, :description, :thumbnail)
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
   def missing_params
@@ -71,5 +57,21 @@ class Admin::TutorialsController < Admin::BaseController
       missing_params << key if value == ''
     end
     missing_params.join(', ')
+  end
+
+  def missing_params_error
+    flash[:error] = "Please enter a #{missing_params}."
+    redirect_to new_admin_tutorial_path
+  end
+
+  def new_tutorial_success
+    tutorial = Tutorial.create(new_tutorial_params)
+    flash[:success] = 'Successfully created tutorial.'
+    redirect_to "/tutorials/#{tutorial.id}"
+  end
+
+  def invalid_thumbnail_error
+    flash[:error] = 'Please enter a valid thumbnail.'
+    redirect_to new_admin_tutorial_path
   end
 end
