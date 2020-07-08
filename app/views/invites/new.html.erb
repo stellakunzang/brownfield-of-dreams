@@ -1,0 +1,7 @@
+<h2>New Playlist from YouTube</h2>
+<%= form_tag invites_path, method: :post do %>
+  <%= label_tag :github_handle, "Github handle" %>
+  <%= text_field_tag :github_handle %>
+
+  <%= submit_tag "Send Invite", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+<% end %>

@@ -1,4 +1,5 @@
 <section class="dashboard-main">
+
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
@@ -9,6 +10,9 @@
     <li> <%= current_user.email %> </li>
     <li> <%= current_user.status %> </li>
   </ul>
+  <section id="invite">
+    <%= link_to 'Send an Invite', invite_path %>
+  </section>
   <section>
     <h1>Bookmarked Segments</h1>
     <% if current_user.videos %>
@@ -22,7 +26,6 @@
     <%end %>
   </section>
 
-  </section>
   <section class="github">
     <% if current_user.github_token.nil? %>
     <p>Connect to Github to See Github Details</p>
@@ -48,7 +51,7 @@
           <%= link_to following.handle, following.url %><br>
           <% if following.in_system? && !following.already_friends?(current_user.id) %>
             <%= link_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{following.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
-          <% else %><br>
+          <% else %>
           <% end %>
         <% end %>
       </section>

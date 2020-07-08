@@ -4,15 +4,16 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    if results.snippet.nil?
-      flash[:error] = 'Sorry, that ID is not valid. Try again?'
-      redirect_to new_admin_youtube_playlist_path
+    if missing_params.present?
+      flash[:error] = "Please enter a #{missing_params}."
+      redirect_to new_admin_tutorial_path
+    elsif valid_thumbnail?(params[:tutorial][:thumbnail])
+      tutorial = Tutorial.create(new_tutorial_params)
+      flash[:success] = 'Successfully created tutorial.'
+      redirect_to "/tutorials/#{tutorial.id}"
     else
-      tutorial_from_playlist = Tutorial.create(new_tutorial_params)
-      tutorial_from_playlist.create_playlist_videos
-      context = view_context.link_to('View it here', tutorial_path(tutorial_from_playlist.id))
-      flash[:success] = "Successfully created tutorial. #{context}."
-      redirect_to admin_dashboard_path
+      flash[:error] = 'Please enter a valid thumbnail.'
+      redirect_to new_admin_tutorial_path
     end
   end
 
@@ -40,11 +41,35 @@ class Admin::TutorialsController < Admin::BaseController
     params.require(:tutorial).permit(:tag_list)
   end
 
-  def results
-    YoutubePlaylistResults.new(params[:playlist_id])
+  def valid_thumbnail?(thumbnail)
+    thumbnail = thumbnail.downcase
+    valid_thumbnail1 = 'http://img.youtube.com'
+    valid_thumbnail2 = 'https://img.youtube.com'
+    valid_thumbnail3 = 'img.youtube.com'
+    scenario1 = thumbnail[0..21] == valid_thumbnail1[0..21]
+    scenario2 = thumbnail[0..22] == valid_thumbnail2[0..22]
+    scenario3 = thumbnail[0..14] == valid_thumbnail3[0..14]
+
+    scenario1 || scenario2 || scenario3
   end
 
+  # def results
+  #   YoutubePlaylistResults.new(params[:playlist_id])
+  # end
+
   def new_tutorial_params
-    results.parameters
+    params.require(:tutorial).permit(:title, :description, :thumbnail)
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
+  end
+
+  def missing_params
+    missing_params = []
+    params[:tutorial].each do |key, value|
+      missing_params << key if value == ''
+    end
+    missing_params.join(', ')
   end
 end

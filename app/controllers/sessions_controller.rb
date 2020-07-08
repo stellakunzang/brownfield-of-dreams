@@ -26,4 +26,9 @@ class SessionsController < ApplicationController
     session[:github_token] = github_token if current_user.save
     redirect_to dashboard_path
   end
+
+  def failure
+    flash[:error] = "Connecting to Github was Unsuccessful"
+    redirect_to dashboard_path
+  end
 end

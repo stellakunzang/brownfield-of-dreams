@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
-    resources :youtube_playlists, only: [:new]
+    resources :youtube_playlists, only: [:new, :create]
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/auth/github/callback', to: 'sessions#update'
+  get '/auth/failure', to: 'sessions#failure'
   get '/logout', to: 'sessions#destroy'
 
   get '/dashboard', to: 'users#show'
@@ -43,9 +44,12 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :update] do
     resources :friendships, only: [:create]
   end
+  
+  get '/invite', to: 'invites#new', as: :invite
+  resources :invites, only: [:create]
 
   resources :tutorials, only: [:show, :index] do
-    resources :videos, only: [:show, :index]
+    resources :videos, only: [:show, :index] 
   end
 
   resources :user_videos, only:[:create, :destroy]

@@ -139,6 +139,7 @@ describe "Registered User Profile Dashboard" do
     within(".friendships")do
       expect(page).to_not have_content("stellakunzang")
     end
+  
   end
 
   it "when user adds friend with account, the friendship is mutual", :vcr do
