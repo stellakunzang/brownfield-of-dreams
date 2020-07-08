@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    flash[:error] = "that didnt work, #{params}"
+    flash[:error] = "Connecting to Github was Unsuccessful"
     redirect_to dashboard_path
   end
 end
