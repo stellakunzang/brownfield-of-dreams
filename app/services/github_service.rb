@@ -33,17 +33,10 @@ class GithubService
   end
 
   def user_search(handle)
-    response = conn.get("/users/#{handle}") 
+    response = conn.get("/users/#{handle}") do |res|
+      res.headers['Authorization'] = "token #{@token}"
+    end
     JSON.parse(response.body, symbolize_names: true)
-  end
-
-  def email_exists?(handle)
-    response = user_search(handle)
-    binding.pry
-  end
-
-  def email(handle)
-    if email_exists?
   end
 
 end

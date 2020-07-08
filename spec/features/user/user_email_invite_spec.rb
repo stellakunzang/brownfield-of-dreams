@@ -37,10 +37,27 @@ describe "Registered User Can Send Email Invite" do
     expect(current_path).to eq('/invite')
     expect(current_path).to eq(invite_path)
 
+    fill_in :github_handle, with: 'adfasdfasdfade5678asdf'
+    click_on "Send Invite"
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("Please enter a valid github handle.")
+    # expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
+  end
+
+  it "Sad: handle has no email", :vcr do
+    visit dashboard_path
+    expect(page).to have_content("Status: Active")
+
+    click_on 'Send an Invite'
+    expect(current_path).to eq('/invite')
+    expect(current_path).to eq(invite_path)
+
     fill_in :github_handle, with: 'dog'
     click_on "Send Invite"
 
     expect(current_path).to eq(dashboard_path)
+    # expect(page).to have_content("Please enter a valid github handle.")
     expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
   end
 
