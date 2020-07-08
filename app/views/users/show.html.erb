@@ -36,12 +36,12 @@
     <p>Connect to Github to See Github Details</p>
     <% else %>
       <h1>Github</h1>
-      <h2>Repositories</h2>
+      <h3>Repositories</h3>
       <% @github_user.repos_limit(5).each do |repo| %>
         <%= link_to repo.name, repo.url, class: "github_link"%><br>
       <%end %>
       <section class="followers">
-        <h2>Followers</h2>
+        <h3>Followers</h3>
         <% @github_user.followers.each do |follower| %>
           <%= link_to follower.handle, follower.url %>
           <% if follower.in_system? && !follower.already_friends?(current_user.id) %>
@@ -51,7 +51,7 @@
         <% end %>
       </section>
       <section class="following">
-        <h2>Following</h2>
+        <h3>Following</h3>
         <% @github_user.followings.each do |following| %>
           <%= link_to following.handle, following.url %><br>
           <% if following.in_system? && !following.already_friends?(current_user.id) %>
