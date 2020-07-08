@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 07 Jul 2020 21:51:37 GMT
+      - Tue, 07 Jul 2020 23:09:22 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -101,7 +101,7 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Tue, 07 Jul 2020 21:51:37 GMT
+  recorded_at: Tue, 07 Jul 2020 23:09:22 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/playlistItems?key=<YOUTUBE_API_KEY>&maxResults=50&part=snippet,contentDetails&playlistId=PLw3DVCAvDGUtrWrm0s2zxnbrgzkG5YAfF
@@ -127,7 +127,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 07 Jul 2020 21:51:38 GMT
+      - Tue, 07 Jul 2020 23:09:22 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -149,7 +149,7 @@ http_interactions:
       string: |
         {
           "kind": "youtube#playlistItemListResponse",
-          "etag": "iTslKpZYkBbF7rJq5fhW3i5n6fU",
+          "etag": "MTjFxM4OHm7fBMVySRRaQgvo8Ik",
           "nextPageToken": "CDIQAA",
           "items": [
             {
@@ -2603,7 +2603,7 @@ http_interactions:
             "resultsPerPage": 50
           }
         }
-  recorded_at: Tue, 07 Jul 2020 21:51:38 GMT
+  recorded_at: Tue, 07 Jul 2020 23:09:22 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/playlistItems?key=<YOUTUBE_API_KEY>&maxResults=50&pageToken=CDIQAA&part=snippet,contentDetails&playlistId=PLw3DVCAvDGUtrWrm0s2zxnbrgzkG5YAfF
@@ -2629,7 +2629,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 07 Jul 2020 21:51:38 GMT
+      - Tue, 07 Jul 2020 23:09:23 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -2651,7 +2651,7 @@ http_interactions:
       string: |
         {
           "kind": "youtube#playlistItemListResponse",
-          "etag": "VT1ykfKHyWGs2ISGGYsbhsvUX1E",
+          "etag": "SFCPGeEAEVkKovUZogwbmMAUmhM",
           "nextPageToken": "CGQQAA",
           "prevPageToken": "CDIQAQ",
           "items": [
@@ -4031,7 +4031,7 @@ http_interactions:
             "resultsPerPage": 50
           }
         }
-  recorded_at: Tue, 07 Jul 2020 21:51:38 GMT
+  recorded_at: Tue, 07 Jul 2020 23:09:23 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/playlistItems?key=<YOUTUBE_API_KEY>&maxResults=50&pageToken=CGQQAA&part=snippet,contentDetails&playlistId=PLw3DVCAvDGUtrWrm0s2zxnbrgzkG5YAfF
@@ -4057,7 +4057,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 07 Jul 2020 21:51:39 GMT
+      - Tue, 07 Jul 2020 23:09:23 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -4079,7 +4079,7 @@ http_interactions:
       string: |
         {
           "kind": "youtube#playlistItemListResponse",
-          "etag": "xndi88lQLs3GC--3zU3tqEgcM34",
+          "etag": "_784baL8XhpyzpJlaasLayutaf0",
           "prevPageToken": "CGQQAQ",
           "items": [
             {
@@ -4682,5 +4682,5 @@ http_interactions:
             "resultsPerPage": 50
           }
         }
-  recorded_at: Tue, 07 Jul 2020 21:51:39 GMT
+  recorded_at: Tue, 07 Jul 2020 23:09:23 GMT
 recorded_with: VCR 6.0.0
