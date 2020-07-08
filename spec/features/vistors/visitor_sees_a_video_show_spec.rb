@@ -38,29 +38,4 @@ describe 'visitor sees a video show' do
     expect(page).to_not have_content(@tutorial_private.title)
 
   end
-
-  # it "visitoris cannot access video page if classroom" do
-  #   user = User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :default)
-  #   visit '/login'
-
-  #   fill_in "session[email]", with: user.email
-  #   fill_in "session[password]", with: user.password
-  #   click_on "Log In"
-
-  #   visit "/tutorials/#{@tutorial_private.id}?video_id=#{@video2.id}"
-  
-  #   expect(page).to have_content(@tutorial_private.title)
-  #   expect(page).to have_content(@video2.title)
-
-  #   click_on 'Profile'
-  #   click_on 'Log Out'
-  #   binding.pry
-
-  #   # visit "/tutorials/#{@tutorial_private.id}?video_id=#{@video2.id}"
-  #   expect(:get => "/tutorials/#{@tutorial_private.id}?video_id=#{@video2.id}").not_to be_routable
-  #   # expect(:get => "/tutorials/#{@tutorial_private.id}?video_id=#{@video2.id}").to raise_error(ActionController::RoutingError)
-  #   # expect{ get :show, :id => 'bad_id' }.to raise_error(ActionController::RoutingError)
-  # end
-  
-  
 end
