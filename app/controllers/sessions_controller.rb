@@ -22,7 +22,8 @@ class SessionsController < ApplicationController
 
   def update
     github_token = request.env['omniauth.auth'][:credentials][:token]
-    current_user.update(github_token: github_token)
+    handle = request.env['omniauth.auth'][:extra][:raw_info][:login]
+    current_user.update(github_token: github_token, handle: handle)
     session[:github_token] = github_token if current_user.save
     redirect_to dashboard_path
   end
