@@ -66,7 +66,16 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "personal_project_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-  ## this is where we put sendgrid, and add to heroku 
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    domain: 'https://brownfield-of-dreams-sb-rp.herokuapp.com/',
+    address:        "smtp.sendgrid.net",
+    port:            587,
+    authentication: :plain,
+    user_name:      'apikey',
+    password:       ENV['SENDGRID_API_KEY']
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
