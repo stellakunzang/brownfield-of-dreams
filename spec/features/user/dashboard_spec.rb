@@ -195,6 +195,11 @@ describe "Registered User Profile Dashboard" do
     end
   end
 
+  it "if a bad github auth fails, return flash error" do
+    visit '/auth/failure'
+    expect(page).to have_content('Connecting to Github was Unsuccessful')
+    expect(current_path).to eq(dashboard_path)
+  end
 end
 
 

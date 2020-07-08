@@ -61,7 +61,9 @@ describe "Registered User Can Send Email Invite" do
     expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
   end
 
-  end
+
+
+end
 
 def stub_omniauth
     OmniAuth.config.test_mode = true

@@ -66,4 +66,30 @@ describe 'vistor can create an account' do
     expect(activation_email.body).to have_content("You are almost finished setting up your new account!")
   end
 
+  it "cannot register with used email address" do
+    user = create(:user)
+
+    visit '/'
+
+    click_on 'Register'
+
+    expect(current_path).to eq(register_path)
+
+    email = 'jimbob@aol.com'
+    first_name = 'Jim'
+    last_name = 'Bob'
+    password = 'password'
+
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on 'Create Account'
+
+    expect(page).to have_content('Username already exists')
+    expect(current_path).to eq('/users')
+  end
+
 end

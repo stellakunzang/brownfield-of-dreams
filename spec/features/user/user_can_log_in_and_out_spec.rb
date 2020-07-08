@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'User' do
-  it 'user can sign in' do
-    user = create(:user)
+  before :each do 
+    @user = create(:user)
 
     visit '/'
 
@@ -10,28 +10,20 @@ describe 'User' do
 
     expect(current_path).to eq(login_path)
 
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
+    fill_in 'session[email]', with: @user.email
+    fill_in 'session[password]', with: @user.password
 
     click_on 'Log In'
-
+  end
+  it 'user can sign in' do
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content(user.email)
-    expect(page).to have_content(user.first_name)
-    expect(page).to have_content(user.last_name)
+    expect(page).to have_content(@user.email)
+    expect(page).to have_content(@user.first_name)
+    expect(page).to have_content(@user.last_name)
   end
 
   # it 'can log out', :js do
   it 'can log out', :vcr do
-    user = create(:user)
-
-    visit login_path
-
-    fill_in'session[email]', with: user.email
-    fill_in'session[password]', with: user.password
-
-    click_on 'Log In'
-
     click_on 'Profile'
 
     expect(current_path).to eq(dashboard_path)
@@ -39,7 +31,7 @@ describe 'User' do
     click_on 'Log Out'
 
     expect(current_path).to eq(root_path)
-    expect(page).to_not have_content(user.first_name)
+    expect(page).to_not have_content(@user.first_name)
     expect(page).to have_content('Sign In')
     # expect(page).to have_content('SIGN IN')
   end
@@ -58,4 +50,5 @@ describe 'User' do
 
     expect(page).to have_content("Looks like your email or password is invalid")
   end
+
 end
