@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  
+
   helper_method :current_user
   helper_method :find_bookmark
   helper_method :list_tags
