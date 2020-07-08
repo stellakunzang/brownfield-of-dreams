@@ -29,7 +29,7 @@
         Classroom: <%=tutorial.classroom %>
       </td>
       <td>
-        <%=button_to 'Toggle', "/admin/tutorials/#{tutorial.id}/update_classroom", method: :post, class: "video-position-submit btn btn-outline" %>
+        <%=button_to 'Toggle', "/admin/tutorials/#{tutorial.id}?classroom=toggle", method: :patch, class: "video-position-submit btn btn-outline" %>
       </td>
 
     </tr>

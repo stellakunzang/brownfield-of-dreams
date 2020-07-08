@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     resources :youtube_playlists, only: [:new, :create]
-    post '/tutorials/:id/update_classroom', to: 'tutorials#update_classroom'
+
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end

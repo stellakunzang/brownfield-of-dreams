@@ -18,9 +18,13 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def update
-    tutorial = Tutorial.find(params[:id])
-    flash[:success] = "#{tutorial.title} tagged!" if tutorial.update(tutorial_params)
-    redirect_to edit_admin_tutorial_path(tutorial)
+    if params[:classroom]
+      toggle_classroom
+    else
+      tutorial = Tutorial.find(params[:id])
+      flash[:success] = "#{tutorial.title} tagged!" if tutorial.update(tutorial_params)
+      redirect_to edit_admin_tutorial_path(tutorial)
+    end
   end
 
   def destroy
@@ -29,7 +33,10 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
   end
 
-  def update_classroom 
+  
+  private
+  
+  def toggle_classroom 
     tutorial = Tutorial.find(params[:id])
     if tutorial.classroom 
       tutorial.update!(classroom: false)
@@ -38,9 +45,7 @@ class Admin::TutorialsController < Admin::BaseController
     end
     redirect_to admin_dashboard_path
   end
-
-  private
-
+  
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
   end
