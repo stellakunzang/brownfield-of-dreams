@@ -44,10 +44,11 @@ Rails.application.routes.draw do
     resources :friendships, only: [:create]
   end
   
-  get '/invites', to: 'invites#new', as: :invite
+  get '/invite', to: 'invites#new', as: :invite
+  resources :invites, only: [:create]
 
   resources :tutorials, only: [:show, :index] do
-    resources :videos, only: [:show, :index]
+    resources :videos, only: [:show, :index] 
   end
 
   resources :user_videos, only:[:create, :destroy]

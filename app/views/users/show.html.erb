@@ -9,6 +9,9 @@
     <li> <%= current_user.email %> </li>
     <li> <%= current_user.status %> </li>
   </ul>
+  <section id="invite">
+    <%= link_to 'Send an Invite', invite_path %>
+  </section>
   <section>
     <h1>Bookmarked Segments</h1>
     <% if current_user.videos %>
