@@ -31,8 +31,8 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = 'Thank you! Your account is now activated.'
       current_user.reload
-      redirect_to dashboard_path
     end
+    redirect_to dashboard_path
   end
 
   def activate

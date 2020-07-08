@@ -5,5 +5,4 @@ class InvitationMailer < ApplicationMailer
     @url = "https://brownfield-of-dreams-sb-rp.herokuapp.com/users/#{@user.id}/activate"
     mail(to: @user.email, subject: 'An invite to Brownfield of Dreams')
   end
-
 end
