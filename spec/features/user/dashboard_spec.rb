@@ -141,6 +141,29 @@ describe "Registered User Profile Dashboard" do
     end
   end
 
+  it "when user adds friend with account, the friendship is mutual", :vcr do
+    friend = create(:user, role: "default")
+    friend.update_attribute(:handle, "stellakunzang")
+    visit dashboard_path
+    click_on "Connect to Github"
+
+    within(".github")do
+      within(".followers")do
+        click_link "Add as Friend"
+      end
+    end
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(friend)
+
+    @user.update_attribute(:handle, "perryr95")
+
+    visit dashboard_path
+
+    within(".friendships")do
+      expect(page).to have_content("#{@user.handle}")
+    end
+  end
+
   it "user can activate account" do
 
     visit "/users/#{@user.id}/activate"
