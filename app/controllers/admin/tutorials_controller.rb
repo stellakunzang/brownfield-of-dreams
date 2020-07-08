@@ -29,6 +29,16 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
   end
 
+  def update_classroom 
+    tutorial = Tutorial.find(params[:id])
+    if tutorial.classroom 
+      tutorial.update!(classroom: false)
+    else 
+      tutorial.update!(classroom: true)
+    end
+    redirect_to admin_dashboard_path
+  end
+
   private
 
   def tutorial_params
