@@ -4,10 +4,6 @@ class GithubService
   end
 
   def conn
-    # Faraday.new("https://api.github.com?access_token=#{@token}")
-    # Faraday.new(url: 'https://api.github.com?access_token=#{token}') do |faraday|
-    #   faraday.headers['Authorization'] = ENV['GITHUB_API_KEY']
-    # end
     Faraday.new("https://api.github.com")
   end
 

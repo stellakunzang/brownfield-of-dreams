@@ -34,5 +34,9 @@
 yarn-debug.log*
 .yarn-integrity
 
+<<<<<<< HEAD
 # Ignore VCR Cassete fixtures 
+=======
+# fixture files from VCR 
+>>>>>>> master
 /spec/fixtures
