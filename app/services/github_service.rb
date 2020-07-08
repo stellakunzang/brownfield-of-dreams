@@ -7,8 +7,10 @@ class GithubService
     Faraday.new('https://api.github.com')
   end
 
-  def get_url(url)
-    response = conn.get("/user/#{url}") do |res|
+  def get_url(url = nil )
+    path = "/user/#{url}" if !url.nil?
+    path = "/user" if url.nil?
+    response = conn.get(path) do |res|
       res.headers['Authorization'] = "token #{@token}"
     end
     JSON.parse(response.body, symbolize_names: true)
