@@ -9,7 +9,7 @@ describe "Registered User Can Send Email Invite" do
     click_on "Connect to Github"
   end
 
-  xit "Happy: Email invite to a valid github handle", :vcr do
+  it "Happy: Email invite to a valid github handle", :vcr do
     visit dashboard_path
     expect(page).to have_content("Status: Active")
 
@@ -22,6 +22,11 @@ describe "Registered User Can Send Email Invite" do
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Successfully sent invite!')
+
+    invitation_email = ActionMailer::Base.deliveries.last
+
+    expect(invitation_email.text_part.body).to have_content("Hello stellakunzang")
+    expect(invitation_email.text_part.body).to have_content("perryr16 has invited you to join Brownfield of Dreams. \nYou can create an account here")
   end
 
   it "Sad: Email invite to a valid github handle", :vcr do
