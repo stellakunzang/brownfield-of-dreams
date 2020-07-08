@@ -11,6 +11,8 @@ class GithubService
     Faraday.new("https://api.github.com")
   end
 
+
+
   def get_url(url)
     response = conn.get("/user/#{url}") do |res|
       res.headers['Authorization'] = "token #{@token}"
@@ -29,4 +31,19 @@ class GithubService
   def followings
     get_url('following')
   end
+
+  def user_search(handle)
+    response = conn.get("/users/#{handle}") 
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def email_exists?(handle)
+    response = user_search(handle)
+    binding.pry
+  end
+
+  def email(handle)
+    if email_exists?
+  end
+
 end
