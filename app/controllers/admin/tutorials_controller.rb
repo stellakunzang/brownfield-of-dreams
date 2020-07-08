@@ -33,19 +33,18 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
   end
 
-  
   private
-  
-  def toggle_classroom 
+
+  def toggle_classroom
     tutorial = Tutorial.find(params[:id])
-    if tutorial.classroom 
+    if tutorial.classroom
       tutorial.update!(classroom: false)
-    else 
+    else
       tutorial.update!(classroom: true)
     end
     redirect_to admin_dashboard_path
   end
-  
+
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
   end

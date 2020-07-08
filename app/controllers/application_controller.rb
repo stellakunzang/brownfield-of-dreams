@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  
-
   helper_method :current_user
   helper_method :find_bookmark
   helper_method :list_tags
@@ -23,6 +21,6 @@ class ApplicationController < ActionController::Base
 
   def four_oh_four
     # raise ActionController::RoutingError, 'Not Found'
-    render file: "/public/404"
+    render file: '/public/404'
   end
 end

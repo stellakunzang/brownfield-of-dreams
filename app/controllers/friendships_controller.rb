@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  
+
   def create
     @friend = User.find_by(handle: params[:future_friend])
     params[:friend_id] = @friend.id
