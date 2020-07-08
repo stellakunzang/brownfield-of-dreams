@@ -4,7 +4,7 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    if !missing_params.empty?
+    if missing_params.present?
       flash[:error] = "Please enter a #{missing_params}."
       redirect_to new_admin_tutorial_path
     elsif valid_thumbnail?(params[:tutorial][:thumbnail])
