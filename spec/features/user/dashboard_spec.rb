@@ -139,7 +139,7 @@ describe "Registered User Profile Dashboard" do
     within(".friendships")do
       expect(page).to_not have_content("stellakunzang")
     end
-  
+
   end
 
   it "when user adds friend with account, the friendship is mutual", :vcr do
@@ -174,18 +174,47 @@ describe "Registered User Profile Dashboard" do
     expect(page).to have_content("Status: Active")
   end
 
+  it "user has unique token and results", :vcr do
+    visit dashboard_path
+    click_on "Connect to Github"
+
+    within(".followers") do
+      expect(page).to have_content("stellakunzang")
+      expect(page).to_not have_content("perryr16")
+    end
+
+    stub_omniauth_also
+
+    visit dashboard_path
+
+    click_on "Connect to Github"
+
+    within(".followers") do
+      expect(page).to_not have_content("stellakunzang")
+      expect(page).to have_content("perryr16")
+    end
+  end
+
   it "if a bad github auth fails, return flash error" do
     visit '/auth/failure'
     expect(page).to have_content('Connecting to Github was Unsuccessful')
     expect(current_path).to eq(dashboard_path)
   end
-  
 end
+
 
 def stub_omniauth
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
     provider: 'github',
     credentials: {token: ENV['GITHUB_ROSS_AUTH_TOKEN']}
+  })
+end
+
+def stub_omniauth_also
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    provider: 'github',
+    credentials: {token: ENV['GITHUB_STELLA_AUTH_TOKEN']}
   })
 end
