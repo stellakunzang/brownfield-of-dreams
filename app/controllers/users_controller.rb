@@ -29,8 +29,8 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     @user.update(active: true)
     if @user.save
-      flash[:notice] = "Thank you! Your account is now activated."
-      current_user.reload 
+      flash[:notice] = 'Thank you! Your account is now activated.'
+      current_user.reload
       redirect_to dashboard_path
     end
   end

@@ -4,9 +4,7 @@ class FriendshipsController < ApplicationController
     params[:friend_id] = @friend.id
     friendship = Friendship.create(friendship_params)
     mutual_friendship = Friendship.create(mutual_friendship_params)
-    if friendship.save && mutual_friendship.save
-      redirect_to dashboard_path
-    end
+    redirect_to dashboard_path if friendship.save && mutual_friendship.save
   end
 
   private
@@ -16,6 +14,6 @@ class FriendshipsController < ApplicationController
   end
 
   def mutual_friendship_params
-    {user_id: params[:friend_id], friend_id: params[:user_id]}
-  end 
+    { user_id: params[:friend_id], friend_id: params[:user_id] }
+  end
 end
