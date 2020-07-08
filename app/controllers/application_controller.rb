@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   # end
 
   def four_oh_four
-    raise ActionController::RoutingError, 'Not Found'
+    # raise ActionController::RoutingError, 'Not Found'
+    render file: '/public/404'
   end
 end

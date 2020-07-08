@@ -3,7 +3,7 @@ prework_tutorial_data = {
   "description"=>"Videos for prework.",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
   "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
-  "classroom"=>false,
+  "classroom"=>false
 }
 prework_tutorial = Tutorial.create! prework_tutorial_data
 
@@ -42,7 +42,7 @@ mod_1_tutorial_data = {
   "description"=>"Videos related to Mod 1.",
   "thumbnail"=>"https://i.ytimg.com/vi/tZDBWXZzLPk/hqdefault.jpg",
   "playlist_id"=>"PL1Y67f0xPzdNsXqiJs1s4NlpI6ZMNdMsb",
-  "classroom"=>false,
+  "classroom"=>true
 }
 
 m1_tutorial = Tutorial.create! mod_1_tutorial_data

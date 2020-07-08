@@ -10,6 +10,8 @@
     <th>Title</th>
     <th>Edit</th>
     <th>Delete</th>
+    <th>Status</th>
+    <th>Toggle</th>
 
   </tr>
   <% @facade.tutorials.each do |tutorial| %>
@@ -23,6 +25,13 @@
                                method: :delete,
                                data: { confirm: 'Are you sure?' } , class: "video-position-submit btn btn-outline"%>
       </td>
+      <td>
+        Classroom: <%=tutorial.classroom %>
+      </td>
+      <td>
+        <%=button_to 'Toggle', "/admin/tutorials/#{tutorial.id}?classroom=toggle", method: :patch, class: "video-position-submit btn btn-outline" %>
+      </td>
+
     </tr>
   <% end %>
 </table>
