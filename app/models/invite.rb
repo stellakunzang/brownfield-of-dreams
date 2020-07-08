@@ -1,5 +1,4 @@
 class Invite
-  
   def initialize(token)
     @token = token
   end
