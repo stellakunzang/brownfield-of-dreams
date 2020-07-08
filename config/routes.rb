@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
-    resources :videos, only: [:edit, :update, :destroy]
+    resources :videos, only: [:edit, :update]
 
     namespace :api do
       namespace :v1 do
@@ -36,21 +36,16 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
-  # Is this being used?
-  get '/video', to: 'video#show'
-
   get '/users/:id/activate', to: 'users#activate'
 
   resources :users, only: [:new, :create, :update] do
     resources :friendships, only: [:create]
   end
-  
+
   get '/invite', to: 'invites#new', as: :invite
   resources :invites, only: [:create]
 
-  resources :tutorials, only: [:show, :index] do
-    resources :videos, only: [:show, :index] 
-  end
+  resources :tutorials, only: [:show]
 
-  resources :user_videos, only:[:create, :destroy]
+  resources :user_videos, only:[:create]
 end
