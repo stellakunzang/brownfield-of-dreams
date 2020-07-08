@@ -77,7 +77,7 @@ describe "Registered User Profile Dashboard" do
 
     within(".github")do
       within(".followers")do
-        click_link "Add as Friend"
+        click_button "Add as Friend"
       end
     end
 
@@ -103,7 +103,7 @@ describe "Registered User Profile Dashboard" do
 
     within(".github")do
       within(".followers")do
-        click_link "Add as Friend"
+        click_button "Add as Friend"
       end
     end
 
@@ -150,7 +150,7 @@ describe "Registered User Profile Dashboard" do
 
     within(".github")do
       within(".followers")do
-        click_link "Add as Friend"
+        click_button "Add as Friend"
       end
     end
 

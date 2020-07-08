@@ -45,7 +45,7 @@
         <% @github_user.followers.each do |follower| %>
           <%= link_to follower.handle, follower.url %>
           <% if follower.in_system? && !follower.already_friends?(current_user.id) %>
-            <%= link_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{follower.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
+            <%= button_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{follower.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
           <% else %><br>
           <% end %>
         <% end %>
@@ -55,7 +55,7 @@
         <% @github_user.followings.each do |following| %>
           <%= link_to following.handle, following.url %><br>
           <% if following.in_system? && !following.already_friends?(current_user.id) %>
-            <%= link_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{following.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
+            <%= button_to "Add as Friend", "users/#{current_user.id}/friendships?future_friend=#{following.handle}", method: :post, class: "btn btn-primary mb1 bg-teal" %><br>
           <% else %>
           <% end %>
         <% end %>
