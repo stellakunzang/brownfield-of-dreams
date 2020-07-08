@@ -69,8 +69,7 @@
       <%= "Bummer. You have no friends." %>
     <% else %>
       <% current_user.friends.each do |friend| %>
-        <p>Name: <%= friend.first_name %> <%= friend.last_name %></p> <br>
-        <p>Github Handle: <%= friend.handle %></p>
+        <p>Name: <%= friend.first_name %> <%= friend.last_name %>, Github Handle: <%= friend.handle %></p>
       <% end %>
     <% end %>
   </section>

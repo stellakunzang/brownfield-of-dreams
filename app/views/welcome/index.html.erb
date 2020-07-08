@@ -9,6 +9,7 @@
       <div class="tutorial-description col md-col-9">
         <h4 class="tutorial-title-home"><%= link_to tutorial.title, tutorial_path(tutorial), class: "title-link" %> </h4>
         <p class="description"><%= tutorial.description %></p> <br>
+        <p>Classroom Content: <%=tutorial.classroom %></p>
       </div>
     </div> <br>
   <% end %>
