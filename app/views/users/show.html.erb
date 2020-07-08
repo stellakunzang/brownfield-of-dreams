@@ -66,11 +66,11 @@
   <section class="friendships">
     <h1>Friends</h1>
     <% if current_user.friends.empty? %>
-      <%= "Bummer.You have no friends." %>
+      <%= "Bummer. You have no friends." %>
     <% else %>
       <% current_user.friends.each do |friend| %>
-        <%= friend.first_name %> <%= friend.last_name %> <br>
-        <%= friend.handle %>
+        <p>Name: <%= friend.first_name %> <%= friend.last_name %></p> <br>
+        <p>Github Handle: <%= friend.handle %></p>
       <% end %>
     <% end %>
   </section>
