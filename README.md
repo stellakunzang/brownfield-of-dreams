@@ -16,6 +16,22 @@ With a more complete test suite, we might have felt more confident making change
 
 There were a few additions we made which went beyond the user stories, but made logical sense and didn't take us too far off course. In particular, one user story pertained to hiding "classroom content". We had trouble testing this in production because there was no way to actually change the setting for tutorial classrooms (a boolean); therefore, a toggle button was added for admin's dashboard.
 
+In terms of contributing to technical debt, there were a number of pieces of functionality that we left incomplete because of time constraints and because it wasn't specifically included in the user stories. One example is regarding creating a duplicate Friendships. Currently, the button for `Add Friend` only appears if a user has a Github account and if you are not already friends with that person. We could however develop this further so that if somehow a user does try to add a friend who they are already friends with a flash message appears. Many such sad paths were not fully accounted for. 
+
+We further added to technical debt by not adding model tests for every single model method we created. We did, however, go back and write some tests based on the `simplecov` coverage report, including adding coverage for brownfield code, so in that sense we lessened the technical debt. 
+
+## Reflecting on Design Using the Four Pillars of OOP
+
+In terms of design, we did very little to alter the existing code.
+
+We followed the best practies that we were introduced to for consuming APIs, including creating POROs and "services" to connect to the API using the Faraday gem. These best practices happen to epitomize abstraction and encapsulation; similar functionality is bundled together and SRP is followed. Our models similarly abstracted functionality out of our controllers and views, following Rails conventions.
+
+The inheritance in place in the `ApplicationController`, as discussed early, was likely putting the cart before the horse; half the methods contained therein were not used anywhere, let alone every single controller.
+
+We had plans to refactor some of our code in order to utilize inheritance and remove repetition, but ultimately we ran out of time. In another iteration, since the Follower and Following models are nearly identical, we could put all the code into a single parent class.
+
+Our Friendship functionality is an example of polymorphism; instead of creating a new class we created a self-referential relationship wherein a friend is actually a member of the the User class.
+
 ## Schema
 
 We made very few additions to the schema. In retrospect, there are probably many changes we would make if time allowed. It is surprising that, though extensive tables exist for the tags, the tags are not directly associated with videos or tutorials.  
@@ -40,18 +56,6 @@ This application consumes APIs from Github, SendGrid, and YouTube. Github is use
 ## Continuous Integration
 
 This was not only the first project where we consumed APIs, but also where we used `Rubocop` and `Travis CI` for debugging and continuous integration. While we didn't actually use Travis CI to deploy our code to Heroku, we did find the feedback from builds helpful in finding bugs, specifically related to API keys and other new details related to using APIs.
-
-## Reflecting on Design Using the Four Pillars of OOP
-
-In terms of design, we did very little to alter the existing code.
-
-We followed the best practies that we were introduced to for consuming APIs, including creating POROs and "services" to connect to the API using the Faraday gem. These best practices happen to epitomize abstraction and encapsulation; similar functionality is bundled together and SRP is followed. Our models similarly abstracted functionality out of our controllers and views, following Rails conventions.
-
-The inheritance in place in the `ApplicationController`, as discussed early, was likely putting the cart before the horse; half the methods contained therein were not used anywhere, let alone every single controller.
-
-We had plans to refactor some of our code in order to utilize inheritance and remove repetition, but ultimately we ran out of time. In another iteration, since the Follower and Following models are nearly identical, we could put all the code into a single parent class.
-
-Our Friendship functionality is an example of polymorphism; instead of creating a new class we created a self-referential relationship wherein a friend is actually a member of the the User class.
 
 ## Implementation Instructions
 
