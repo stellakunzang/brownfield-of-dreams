@@ -37,6 +37,10 @@ The Friend class is never actually created, but references back to a user that a
 
 This application consumes APIs from Github, SendGrid, and YouTube. Github is used to find followers and users followed as well as repos. It is also used to find email addresses for friends that a user would like to invite to create an account. SendGrid is used to send confirmation emails to newly registered users and invitation emails to their friends. YouTube is where all the videos and their information come from. An admin can also create a new tutorial using an existing YouTube playlist.
 
+## Continuous Integration
+
+This was not only the first project where we consumed APIs, but also where we used `Rubocop` and `Travis CI` for debugging and continuous integration. While we didn't actually use Travis CI to deploy our code to Heroku, we did find the feedback from builds helpful in finding bugs, specifically related to API keys and other new details related to using APIs.
+
 ## Reflecting on Design Using the Four Pillars of OOP
 
 In terms of design, we did very little to alter the existing code.
@@ -48,10 +52,6 @@ The inheritance in place in the `ApplicationController`, as discussed early, was
 We had plans to refactor some of our code in order to utilize inheritance and remove repetition, but ultimately we ran out of time. In another iteration, since the Follower and Following models are nearly identical, we could put all the code into a single parent class.
 
 Our Friendship functionality is an example of polymorphism; instead of creating a new class we created a self-referential relationship wherein a friend is actually a member of the the User class.
-
-## Continuous Integration
-
-This was not only the first project where we consumed APIs, but also where we used `Rubocop` and `Travis CI` for debugging and continuous integration. While we didn't actually use Travis CI to deploy our code to Heroku, we did find the feedback from builds helpful in finding bugs, specifically related to API keys and other new details related to using APIs. 
 
 ## Implementation Instructions
 
