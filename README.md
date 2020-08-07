@@ -24,7 +24,7 @@ We further added to technical debt by not adding model tests for every single mo
 
 In terms of design, we did very little to alter the existing code.
 
-We followed the best practies that we were introduced to for consuming APIs, including creating POROs and "services" to connect to the API using the Faraday gem. These best practices happen to epitomize abstraction and encapsulation; similar functionality is bundled together and SRP is followed. Our models similarly abstracted functionality out of our controllers and views, following Rails conventions.
+We followed the best practies that we were introduced to for consuming APIs, including creating POROs and "services" to connect to the API using the Faraday gem. These best practices happen to epitomize abstraction and encapsulation; similar functionality is bundled together and SRP is followed. Our models similarly abstracted complex logic out of our controllers and views, following Rails conventions.
 
 The inheritance in place in the `ApplicationController`, as discussed early, was likely putting the cart before the horse; half the methods contained therein were not used anywhere, let alone every single controller.
 
